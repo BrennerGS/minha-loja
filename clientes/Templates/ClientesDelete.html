@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %} My Website - Deletar Cliente{% endblock %}
+
+{% block content %} 
+    <div class="container mt-5" style="align-items: center; align-self: center;">
+      
+        <h1 style="text-align: center;">Deletar Clientes</h1>
+        <div class="borderview border">
+          <a href="{% url 'ClienteInsert' %}" class="buttonSuccess">Inserir</a>
+            <form action="" method="post">
+              {% csrf_token %}
+              
+              <h3><p>Nome: {{ Clientes.Nome }}</p></h3>
+              <h3><p>CNPJ ou CPF: {{ Clientes.CNPJ_CPF }}</p></h3>
+              <h3><p>Email: {{ Clientes.Email }}</p></h3>
+              <h3><p>Celular: {{ Clientes.Celular }}</p></h3>
+              
+              <div style="margin: auto; text-align: center; margin: auto;">
+                <input type="submit" value="Excluir" class="buttonWarning">
+                <a href="{% url 'ClienteEdit' Clientes.id %}" class="buttonSuccess ">Editar</a>  
+                <a href="{% url 'ClientesList' %}" class="buttonSuccess">Voltar</a>
+              </div>
+
+            </form>
+          </div>
+        
+
+          
+
+    </div>
+
+
+{% endblock %}

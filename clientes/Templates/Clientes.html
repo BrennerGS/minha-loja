@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} My Website - Clientes{% endblock %}
+{% block content %} 
+    <div class="container mt-5">
+        <h1 style="align-items: center; text-align: center;">Lista de Clientes</h1>
+        <a href="{% url 'ClienteInsert' %}" class="buttonSuccess">Adicionar Cliente</a>
+        <table>
+                <tr>
+                    <th>Nome</th>
+                    <th>CNPJ_CPF</th>
+                    <th>Email</th>
+                    <th>Celular</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+                {% for Cliente in Clientes %}
+                <tr>
+                    <td><a href="{% url 'ClienteView' Cliente.id %}">{{ Cliente.Nome }}</a></td>
+                    <td><a href="{% url 'ClienteView' Cliente.id %}">{{ Cliente.CNPJ_CPF }}</a></td>
+                    <td><a href="{% url 'ClienteView' Cliente.id %}">{{ Cliente.Email }}</a></td>
+                    <td><a href="{% url 'ClienteView' Cliente.id %}">{{ Cliente.Celular }}</a></td>
+                    <td><a href="{% url 'ClienteEdit' Cliente.id %}">Editar</a></td>
+                    <td><a href="{% url 'ClienteDelete' Cliente.id %}">Excluir</a></td>
+                </tr>
+                {% endfor %}
+        </table>
+        
+    </div>
+
+{% endblock %}

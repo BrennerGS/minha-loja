@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %} My Website - Inserir Cliente{% endblock %}
+
+{% block content %} 
+    <div class="container mt-5">
+        <h1 style="text-align: center;">Inserir Clientes</h1>
+        <div class="borderview border">
+            <form action="" method="post">
+              {% csrf_token %}
+              
+              <label for="fNome">Nome</label>
+              <input type="text" id="fNome" required name="Nome" placeholder="Nome..">
+          
+              <label for="lcnpj_cpf">CNPJ ou CPF</label>
+              <input type="text" id="lcnpj_cpf" required name="CNPJ_CPF" placeholder="CNPJ ou CPF..">
+          
+              <label for="lEmail">Email</label>
+              <input type="email" id="lEmail" required name="Email" placeholder="Email..">
+          
+              <label for="lCelular">Celular</label>
+              <input type="number" id="lCelular" required name="Celular" placeholder="Celular..">
+              
+              <input type="submit" class="buttonSuccess" value="Submit">
+              <a href="{% url 'ClientesList' %}" class="buttonSuccess">Voltar</a>
+            </form>
+          </div>
+        
+
+          
+
+    </div>
+
+
+{% endblock %}

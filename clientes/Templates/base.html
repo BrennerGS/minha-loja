@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'all.css' %}">
+  
+{% block style %}
+
+{% endblock %}   
+
+
+<style>
+  .alert {
+    padding: 20px;
+    border-radius: 10px;
+    margin: 15px;
+    color: black;
+  }
+  .alert-success {
+    padding: 20px;
+    background-color: #04AA6D;
+    border-radius: 10px;
+    margin: 15px;
+    color: white;
+  }
+  .alert-danger {
+    padding: 20px;
+    background-color: #f44336;
+    border-radius: 10px;
+    margin: 15px;
+    color: white;
+  }
+  .alert-info {
+    padding: 20px;
+    background-color: #2196F3;
+    border-radius: 10px;
+    margin: 15px;
+    color: white;
+  }
+  .alert-warning {
+    padding: 20px;
+    background-color: #ff9800;
+    border-radius: 10px;
+    margin: 15px;
+    color: white;
+  }
+
+  /* The close button */
+  .closebtn {
+    margin-left: 15px;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  /* When moving the mouse over the close button */
+  .closebtn:hover {
+    color: black;
+  }
+</style>
+
+
+  
+
+</head>
+<body>
+
+<div class="header">
+  <h1>My Website</h1>
+  <p>Resize the browser window to see the effect.</p>
+</div>
+
+<div class="topnav">
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+  <a href="#">Link</a>
+  <a href="#" style="float:right">Link</a>
+</div>
+
+<div class="row">
+  <div class="leftcolumn">
+    <div class="card">
+      <h2>About Me</h2>
+      <div class="fakeimg" style="height:100px;">Image</div>
+      <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+    </div>
+    <div class="card">
+      <h3>Popular Post</h3>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+      <div class="fakeimg"><p>Image</p></div>
+    </div>
+    <div class="card">
+      <h3>Follow Me</h3>
+      <p>Some text..</p>
+    </div>
+  </div>
+
+  <div class="rightcolumn">
+
+    {% if messages %}
+    {% if message.tags %}{{ message.tags }}{% endif %}
+    <div >
+        {% for message in messages %}
+        <div class="{% if message.tags %}alert-{{ message.tags }} {% else %} alert {% endif %}">
+          <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% block content %}
+
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Dec 7, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+
+    {% endblock %}
+    
+  </div>
+  
+</div>
+
+<div class="footer">
+  <h2>Footer</h2>
+</div>
+<script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+
+{% block script  %}
+
+{% endblock %} 
+
+
+</body>
+</html>
+
+

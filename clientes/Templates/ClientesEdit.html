@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %} My Website - Editar Cliente{% endblock %}
+
+{% block content %} 
+    <div class="container mt-5">
+
+        <h1 style="text-align: center;">Editar Clientes</h1>
+        <div  class="borderEdit border">
+          <a href="{% url 'ClienteInsert' %}" class="buttonSuccess ">Inserir</a>
+            <form action="" method="post">
+              {% csrf_token %}
+              
+              <label for="fNome">Nome</label>
+              <input type="text" id="fNome" required name="Nome" value="{{ Clientes.Nome }}">
+          
+              <label for="lcnpj_cpf">CNPJ ou CPF</label>
+              <input type="text" id="lcnpj_cpf" class="cpf" maxlength="14" onclick="formatarCampo();" onfocus="formatarCampo();" onblur="formatarCampo();" name="CNPJ_CPF" value="{{ Clientes.CNPJ_CPF }}">
+          
+              <label for="lEmail">Email</label>
+              <input type="email" id="lEmail" required name="Email" value="{{ Clientes.Email }}">
+          
+              <label for="lCelular">Celular</label>
+              <input type="text" id="lCelular" required name="Celular" value="{{ Clientes.Celular }}" data-mask="(00) 00000-0000" data-mask-reverse="true">
+              <div id="teste">teste</div>
+              
+              <div style="margin: auto; text-align: center; margin: auto;">
+                <input type="submit" class="buttonSuccess " value="Submit">
+                <a href="{% url 'ClienteDelete' Clientes.id %}" class="buttonWarning ">Excluir</a> 
+                <a href="{% url 'ClientesList' %}" class="buttonSuccess ">Voltar</a>
+              </div>
+            </form>
+          </div>
+        
+
+          
+
+    </div>
+
+    
+{% endblock %}
+
+{% block script  %}
+  <script>
+    function formatarCampo() {
+      var campoTexto = document.getElementById("lcnpj_cpf");
+      
+
+        if (campoTexto.value.length <= 11) {
+          campoTexto.value = mascaraCpf(campoTexto.value);
+        } else {
+          campoTexto.value = mascaraCnpj(campoTexto.value);
+        }
+    }
+    
+    function mascaraCpf(valor) {
+        return valor.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, "$1.$2.$3-$4");
+    }
+    
+    function mascaraCnpj(valor) {
+        return valor.replace(/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/g, "$1.$2.$3/$4-$5");
+    }
+    
+    formatarCampo();
+    </script>
+{% endblock %} 

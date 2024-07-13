@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %} My Website - Editar Cliente{% endblock %}
+
+{% block content %} 
+    <div class="container mt-5">
+      
+        <h1 style="text-align: center;">Visualizar Cliente</h1>
+        <div class="borderview border">
+          <a href="{% url 'ClienteInsert' %}" class="buttonSuccess ">Inserir</a>
+          <h3><p>Nome: {{ Clientes.Nome }}</p></h3>
+          <h3><p>CNPJ ou CPF: {{ Clientes.CNPJ_CPF }}</p></h3>
+          <h3><p>Email: {{ Clientes.Email }}</p></h3>
+          <h3><p>Celular: {{ Clientes.Celular }}</p></h3>
+          <p style="margin: auto; text-align: center; margin: auto;">
+            <a href="{% url 'ClienteEdit' Clientes.id %}" class="buttonSuccess ">Editar</a>  
+            <a href="{% url 'ClienteDelete' Clientes.id %}" class="buttonWarning ">Excluir</a> 
+            <a href="{% url 'ClientesList' %}" class="buttonSuccess ">Voltar</a>
+          </p>
+          
+        </div>
+        
+
+          
+
+    </div>
+
+
+{% endblock %}
